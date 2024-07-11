@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+</head>
+<body>
+    <form id="myForm">
+        <input type="text" id="name" placeholder="Name">
+        <input type="email" id="email" placeholder="Email">
+        <button type="submit">Submit</button>
+        <p id="errorMessages"></p>
+    </form>
+    <script>
+        // JavaScript to validate form data
+        const form = document.getElementById('myForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const errorMessages = document.getElementById('errorMessages');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            errorMessages.textContent = '';
+
+            if (nameInput.value === '') {
+                errorMessages.textContent += 'Name is required. ';
+            }
+
+            if (emailInput.value === '') {
+                errorMessages.textContent += 'Email is required. ';
+            } else if (!emailInput.value.includes('@')) {
+                errorMessages.textContent += 'Email is invalid. ';
+            }
+        });
+    </script>
+</body>
+</html>
